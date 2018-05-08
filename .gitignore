@@ -6,3 +6,6 @@ CMWHackathon.sln
 .idea/.idea.CMWHackathon/.idea/vcs.xml
 .idea/.idea.CMWHackathon/.idea/workspace.xml
 ./node_modules/*
+.idea/.idea.CMWHackathon/.idea/misc.xml
+.idea/.idea.CMWHackathon/.idea/inspectionProfiles/Project_Default.xml
+./idea/*
