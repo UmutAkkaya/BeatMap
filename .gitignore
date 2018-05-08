@@ -5,3 +5,4 @@ CMWHackathon.sln
 .idea/.idea.CMWHackathon/.idea/modules.xml
 .idea/.idea.CMWHackathon/.idea/vcs.xml
 .idea/.idea.CMWHackathon/.idea/workspace.xml
+./node_modules/*
