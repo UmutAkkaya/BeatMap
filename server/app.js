@@ -7,11 +7,18 @@ const cookieParser = require('cookie-parser');
 const path         = require('path');
 const logger       = require('morgan');
 const routes       = require('./routes');
+const mongoose     = require('mongoose');
 
 const port = process.env.PORT || 3000;
 
 // configure the express server
 const app = express();
+mongoose.connect('mongodb://159.65.163.80/beatmaps');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("MongoDB connection established!");
+});
 
 // if we're developing, use webpack middleware for module hot reloading
 if (process.env.NODE_ENV !== 'production') {
