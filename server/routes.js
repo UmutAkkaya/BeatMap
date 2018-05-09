@@ -85,5 +85,7 @@ router.get('/callback', (req, res) => {
 });
 
 router.post('/events', eventRoutes.createEvent);
+router.get('/events', eventRoutes.getEvents);
+
 
 module.exports = router;
