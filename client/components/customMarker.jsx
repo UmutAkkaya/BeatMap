@@ -34,21 +34,21 @@ export default class CustomMarker extends Component {
 
             {this.state.isOpen && <InfoWindow onCloseClick={this.onToggleOpen}>
                 <div>
-                    <h3> Top Genres </h3>
+                    <h4> Top Genres </h4>
                     <ul>
                         {
-                            this.props.marker.topGenres.map(genre => 
-                                <li> {genre.name} </li>
+                            this.props.marker.topGenres.slice(0, 7).map(genre => 
+                                <li> {genre} </li>
                             )
                         }
                     </ul>
                     <hr/>
 
-                    <h3> Top Tracks </h3>
+                    <h4> Recently Listened Tracks </h4>
                     <ul>
                         {
-                            this.props.marker.topTracks.map(track => 
-                                <li> <a href={track.url}> {track.name} </a> </li>
+                            this.props.marker.topTracks.slice(0, 7).map(track => 
+                                <li> <a href={track.split('=')[1]}> {track.split('=')[0]} </a> </li>
                             )
                         }
                     </ul>

@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 var artistSchema = mongoose.Schema(
     {
         name: String, 
-        tracks: String
+        tracks: [mongoose.Schema.Types.ObjectId]
     }
 )
 

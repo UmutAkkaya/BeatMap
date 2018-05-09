@@ -5,13 +5,19 @@ import {
     setTokens,
 } from '../actions/actions';
 
-import CustomGoogleMap from './customGoogleMap.jsx';
-
 /**
  * Our user page
  * Displays the user's information
  */
 class User extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.setUserLocation = this.setUserLocation.bind(this);
+        this.getLocation = this.getLocation.bind(this);
+    }
+
     /** When we mount, get the tokens from react-router and initiate loading the info */
     componentDidMount() {
         // params injected via react-router, dispatch injected via connect
@@ -30,6 +36,21 @@ class User extends Component {
     }
 
     setUserLocation(position) {
+
+        let coords = {latitude: position.coords.latitude, longitude: position.coords.longitude, timestamp: position.timestamp}
+        let body = JSON.stringify({
+            email: this.props.user.email,
+            location: coords,
+        });
+        
+        fetch('http://localhost:3000/setLocation/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: body
+        });
         console.log(position);
     }
 
@@ -59,7 +80,6 @@ class User extends Component {
                         <li><span>Product</span><span>{product}</span></li>
                     </ul>
                 </div>
-                <CustomGoogleMap/>
             </div>
         );
     }
