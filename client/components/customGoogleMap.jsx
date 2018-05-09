@@ -35,7 +35,7 @@ export default class CustomGoogleMap extends React.PureComponent {
 
     render() {
         return (
-            <MapWithAMarkerClusterer coords={this.state.coords} markers={this.state.markers}/>
+            <MapWithAMarkerClusterer genre={this.props.genre} coords={this.state.coords} markers={this.state.markers}/>
         )
     }
 }
@@ -67,7 +67,11 @@ const MapWithAMarkerClusterer = compose(
             enableRetinaIcons
             gridSize={60}
         >
-            {props.markers.map(marker => (
+            {(props.genre !== null && props.genre !== undefined) && props.markers.filter(m => m.topGenres.includes(props.genre)).map(marker => (
+                <CustomMarker marker={marker}/>
+            ))}
+
+            {(props.genre === null || props.genre === undefined) && props.markers.map(marker => (
                 <CustomMarker marker={marker}/>
             ))}
         </MarkerClusterer>

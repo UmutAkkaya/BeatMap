@@ -43,7 +43,7 @@ class MapComponent extends Component {
         return (
             <div>
                 {!this.state.loading &&
-                <CustomGoogleMap coords={this.state.location}/>
+                <CustomGoogleMap genre={this.props.params ? this.props.params.genre : null} coords={this.state.location}/>
                 }
             </div>
         )

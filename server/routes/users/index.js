@@ -11,7 +11,7 @@ const addUser =
         const newUser =
             new User({
                 username: eventData.username,
-                email: eventData.username,
+                email: eventData.email,
                 location: eventData.location,
                 country: eventData.country,
                 topTracks: eventData.topTracks,

@@ -3,7 +3,7 @@ import {render} from 'react-dom';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
-import {Router, Route, IndexRoute, hashHistory} from 'react-router';
+import {Router, Route, IndexRoute, hashHistory, Switch} from 'react-router';
 import {syncHistory, routeReducer} from 'react-router-redux';
 import {createHistory} from 'history';
 import reducer from './reducers';
@@ -29,14 +29,15 @@ class Root extends Component {
     render() {
         return (
             <Provider store={store}>
-                    <Router history={hashHistory}>
-                        <Route path="/" component={App}>
-                            <IndexRoute component={Login}/>
-                            <Route path="/user/:accessToken/:refreshToken" component={User}/>
-                            <Route path="/error/:errorMsg" component={Error}/>
-                            <Route path="/maps" component={MapComponent}/>
-                        </Route>
-                    </Router>
+                <Router history={hashHistory}>
+                    <Route path="/" component={App}>
+                        <IndexRoute component={Login}/>
+                        <Route path="/user/:accessToken/:refreshToken" component={User}/>
+                        <Route path="/error/:errorMsg" component={Error}/>
+                        <Route path="/maps" component={MapComponent}/>
+                        <Route path="/maps/:genre" component={MapComponent}/>
+                    </Route>
+                </Router>
             </Provider>
         );
     }
