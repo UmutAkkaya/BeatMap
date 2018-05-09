@@ -7,7 +7,8 @@ const createEvent =
     (req, res) => {
         console.log(req);
         const eventData = req.body;
-        console.log(`Adding event with name: ${eventData.name} and location: ${eventData.location}`);
+        console.log(
+            `Adding event with name: ${eventData.name} and location: ${eventData.location}`);
         const newEvent =
             new Event({
                 name: eventData.name,
@@ -24,12 +25,20 @@ const createEvent =
                     }));
                 return;
             }
-            console.log("New event added successfully");
+            console.log('New event added successfully');
             res.send(200, 'Event added successfully!');
         });
     }
 
+const getEvents =
+    (req, res) => {
+        Event.find(function (err, events) {
+            if (err) return console.error(err);
+            res.send(events);
+        })
+    }
 
 module.exports = {
-    createEvent
+    createEvent,
+    getEvents
 }

@@ -88,6 +88,7 @@ router.get('/callback', (req, res) => {
 
 router.post('/events', eventRoutes.createEvent);
 router.post('/artist', artistRoutes.createArtist);
+router.get('/events', eventRoutes.getEvents);
 router.post('/tracks', trackRoutes.addTrack);
 
 module.exports = router;
