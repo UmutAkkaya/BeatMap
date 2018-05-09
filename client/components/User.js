@@ -5,6 +5,8 @@ import {
     setTokens,
 } from '../actions/actions';
 
+import CustomGoogleMap from './customGoogleMap.jsx';
+
 /**
  * Our user page
  * Displays the user's information
@@ -26,7 +28,7 @@ class User extends Component {
             navigator.geolocation.getCurrentPosition(this.setUserLocation);
         }
     }
-    
+
     setUserLocation(position) {
         console.log(position);
     }
@@ -57,6 +59,7 @@ class User extends Component {
                         <li><span>Product</span><span>{product}</span></li>
                     </ul>
                 </div>
+                <CustomGoogleMap/>
             </div>
         );
     }
