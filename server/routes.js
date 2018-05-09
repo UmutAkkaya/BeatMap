@@ -6,6 +6,7 @@ const express = require('express');
 const router = new express.Router();
 const mongoose = require('mongoose');
 const eventRoutes = require('./routes/events');
+const trackRoutes = require('./routes/tracks');
 
 // configure the express server
 const CLIENT_ID = '8f0471703d644ad694d2f1532ebf8388';
@@ -86,6 +87,6 @@ router.get('/callback', (req, res) => {
 
 router.post('/events', eventRoutes.createEvent);
 router.get('/events', eventRoutes.getEvents);
-
+router.post('/tracks', trackRoutes.addTrack);
 
 module.exports = router;
